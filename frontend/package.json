@@ -6,6 +6,8 @@
         "dev": "vite",
         "build": "vite build",
         "preview": "vite preview",
+        "lint": "eslint --color .",
+        "fix": "eslint . --fix --color",
         "test": "jest",
         "test:watch": "jest --watch"
     },
