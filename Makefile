@@ -11,7 +11,6 @@ install:
 
 install-frontend:
 	@echo "Installing package..."
-	@copy .\frontend\.env.example .\frontend\.env
 	@cd .\frontend && npm ci
 	@echo All done !
 
