@@ -41,6 +41,13 @@ export default defineConfig([
     },
 
     {
+        files: ['babel.config.js', 'jest.config.js', 'src/__tests__/**/*'],
+        languageOptions: {
+            globals: globals.node,
+        },
+    },
+
+    {
         files: ['**/*.{test,spec}.{js,jsx}'],
         plugins: {
             jest,
