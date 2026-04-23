@@ -9,14 +9,9 @@ install:
 	@copy .\frontend\.env.example .\frontend\.env
 	@echo All done !
 
-install-frontend:
+install-%:
 	@echo "Installing package..."
-	@cd frontend && npm ci
-	@echo All done !
-
-install-backend:
-	@echo "Installing package..."
-	@cd backend && npm ci
+	@cd $* && npm ci
 	@echo All done !
 
 start: 
@@ -51,3 +46,6 @@ lint-fix-%:
 
 test:
 	make lint-frontend; make lint-backend
+
+jest-%:
+	@cd $* && npm run test
