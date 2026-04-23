@@ -27,11 +27,17 @@ logs:
 exec:
 	@docker compose exec -T -it $(word 2,$(MAKECMDGOALS)) $(word 3,$(MAKECMDGOALS))
 
-lint-%:
+lint-%-docker:
 	@docker compose exec -T $* npm run lint
 
-lint-fix-%:
+lint-fix-%-docker:
 	@docker compose exec -T $* npm run fix
+
+lint-%:
+	@cd $* && npm run lint
+
+lint-fix-%:
+	@cd $* && npm run fix
 
 test:
 	make lint-frontend; make lint-backend
