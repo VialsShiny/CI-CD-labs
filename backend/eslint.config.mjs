@@ -14,13 +14,19 @@ export default [
 
     {
         files: ['**/*.{test,spec}.{js,mjs,cjs}'],
-        plugins: {jest},
-        ...jest.configs.recommended,
+        plugins: {
+            jest,
+        },
         languageOptions: {
             globals: {
                 ...globals.jest,
                 ...globals.node,
             },
+        },
+        rules: {
+            'jest/no-focused-tests': 'error',
+            'jest/no-disabled-tests': 'warn',
+            'jest/expect-expect': 'error',
         },
     },
 ];
