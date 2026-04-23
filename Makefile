@@ -11,12 +11,12 @@ install:
 
 install-frontend:
 	@echo "Installing package..."
-	@cd .\frontend && npm ci
+	@cd frontend && npm ci
 	@echo All done !
 
 install-backend:
 	@echo "Installing package..."
-	@cd .\backend && npm ci
+	@cd backend && npm ci
 	@echo All done !
 
 start: 
