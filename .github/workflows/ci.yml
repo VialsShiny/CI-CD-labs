@@ -1,6 +1,8 @@
 name: Continuous Integration
 
-on: [push]
+on:
+    push:
+
 jobs:
     quality-frontend:
         runs-on: ubuntu-latest
@@ -13,7 +15,7 @@ jobs:
               uses: actions/setup-node@v6
               with:
                   node-version: '24'
-                  cache: 'npm'
+                  cache: npm
 
             - name: Install dependencies
               run: make install-frontend
@@ -32,7 +34,7 @@ jobs:
               uses: actions/setup-node@v6
               with:
                   node-version: '24'
-                  cache: 'npm'
+                  cache: npm
 
             - name: Install dependencies
               run: make install-backend
@@ -42,14 +44,16 @@ jobs:
 
     test-backend:
         runs-on: ubuntu-latest
+
         steps:
             - name: Checkout repository
               uses: actions/checkout@v5
+
             - name: Setup Node.js
               uses: actions/setup-node@v6
               with:
                   node-version: '24'
-                  cache: 'npm'
+                  cache: npm
 
             - name: Install dependencies
               run: make install-backend
@@ -59,14 +63,16 @@ jobs:
 
     test-frontend:
         runs-on: ubuntu-latest
+
         steps:
             - name: Checkout repository
               uses: actions/checkout@v5
+
             - name: Setup Node.js
               uses: actions/setup-node@v6
               with:
                   node-version: '24'
-                  cache: 'npm'
+                  cache: npm
 
             - name: Install dependencies
               run: make install-frontend

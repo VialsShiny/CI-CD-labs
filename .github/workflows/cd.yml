@@ -1,7 +1,9 @@
-name: Continuous Deployement
+name: Continuous Deployment
+
 on:
     push:
         branches: [main]
+
 jobs:
     deploy-backend:
         runs-on: ubuntu-latest
@@ -28,6 +30,7 @@ jobs:
                   tags: |
                       vials512t/ci-cd-labs:backend-latest
                       vials512t/ci-cd-labs:backend-${{ github.sha }}
+
     deploy-frontend:
         runs-on: ubuntu-latest
 
@@ -53,7 +56,9 @@ jobs:
                   tags: |
                       vials512t/ci-cd-labs:frontend-latest
                       vials512t/ci-cd-labs:frontend-${{ github.sha }}
+
     deploy:
+        needs: [deploy-backend, deploy-frontend]
         runs-on: ubuntu-latest
         environment: production
 
@@ -67,8 +72,8 @@ jobs:
                   host: ${{ secrets.VPS_HOST }}
                   username: ${{ secrets.VPS_USER }}
                   key: ${{ secrets.VPS_SSH_KEY }}
-                  source: 'docker-compose.prod.yml'
-                  target: '/opt/app'
+                  source: docker-compose.prod.yml
+                  target: /opt/app
 
             - name: Deploy on VPS
               uses: appleboy/ssh-action@v1.0.3
