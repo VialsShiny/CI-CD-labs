@@ -53,6 +53,7 @@ jobs:
                   context: ./frontend
                   file: ./frontend/Dockerfile
                   push: true
+                  build-args: VITE_API_URL=${{ vars.VITE_API_URL }}
                   tags: |
                       vials512t/ci-cd-labs:frontend-latest
                       vials512t/ci-cd-labs:frontend-${{ github.sha }}
