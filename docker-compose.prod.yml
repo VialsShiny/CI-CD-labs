@@ -45,7 +45,7 @@ services:
             - mysql
 
     backend:
-        image: vials512t/backend:latest
+        image: vials512t/ci-cd-labs:backend-latest
         container_name: express-backend
         restart: always
         ports:
@@ -69,7 +69,7 @@ services:
         command: npm run start
 
     frontend:
-        image: vials512t/frontend:latest
+        image: vials512t/ci-cd-labs:frontend-latest
         container_name: react-frontend
         restart: always
         ports:
